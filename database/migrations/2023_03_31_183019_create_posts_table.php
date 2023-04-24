@@ -12,6 +12,10 @@ return new class extends Migration {
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
+            $table->string('title');
+            $table->text('content');
+            // $table->uuid('author');
+            $table->foreignUuid('author')->references('uuid')->on('users');
             $table->timestamps();
         });
     }

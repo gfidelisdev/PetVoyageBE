@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\MyUuid;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Company extends Model
+class Comment extends Model
 {
-    use HasFactory, MyUuid, SoftDeletes;
-    protected $primaryKey = 'uuid';
+    use HasFactory, SoftDeletes;
     protected $dates = ['deleted_at'];
 
 }

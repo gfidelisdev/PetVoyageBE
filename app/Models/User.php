@@ -12,7 +12,8 @@ use App\Traits\MyUuid;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, MyUuid;
-
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     protected $primaryKey = 'uuid';
 
     /**

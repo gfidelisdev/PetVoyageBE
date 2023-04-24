@@ -10,10 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
-            $table->string('name');
-            $table->timestamps();
+        //
+        Schema::table('posts', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +21,11 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('companies');
+        //
+        if (Schema::hasColumn('posts', 'deleted_at')) {
+            Schema::table('posts', function (Blueprint $table) {
+                $table->dropColumn('deleted_at');
+            });
+        }
     }
 };

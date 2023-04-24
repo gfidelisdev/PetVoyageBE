@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('users/{id}', function ($id) {
 
     });
+});
+
+Route::prefix('friends')->group(function () {
+    Route::get('/', function () {
+        return json_encode(['message' => 'oi']);
+    });
+});
+
+Route::prefix('user')->group(function () {
+    Route::get('{author}/posts', [PostController::class, 'index']);
 });

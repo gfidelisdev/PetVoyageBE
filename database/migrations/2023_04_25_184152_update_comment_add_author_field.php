@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::table('comments', function (Blueprint $table) {
             //
-            $table->uuid('reply_to')->nullable();
-            $table->foreign('reply_to')->references('uuid')->on('comments')->onDelete('cascade')->default(null);
+            $table->foreignUuid('author')->references('uuid')->on('users');
         });
     }
 
@@ -25,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('comments', function (Blueprint $table) {
             //
-            $table->dropColumn('reply_to');
+            $table->dropColumn('author');
         });
     }
 };

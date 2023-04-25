@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,10 @@ class CommentFactory extends Factory
     {
         return [
             //
+            'text' => fake('pt_BR')->realTextBetween(3, 40),
+            // 'reply_to' => null,
+            'post_id' => Post::query()->inRandomOrder()->first()->uuid,
+            'author' => User::query()->inRandomOrder()->first()->uuid
         ];
     }
 }

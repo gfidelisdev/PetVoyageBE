@@ -10,9 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    use HasFactory, MyUuid;
+    use HasFactory, SoftDeletes, MyUuid;
     protected $primaryKey = 'uuid';
-    use SoftDeletes;
     protected $dates = ['deleted_at'];
-
 }

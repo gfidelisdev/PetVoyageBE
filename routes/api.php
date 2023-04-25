@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('users/{id}', function ($id) {
-
     });
 });
 
@@ -33,4 +33,7 @@ Route::prefix('friends')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::get('{author}/posts', [PostController::class, 'index']);
+});
+Route::prefix('post')->group(function () {
+    Route::get('{post}/comments', [CommentController::class, 'index']);
 });

@@ -11,9 +11,10 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($post_id)
     {
         //
+        return Comment::where('post_id', $post_id)->get();
     }
 
     /**

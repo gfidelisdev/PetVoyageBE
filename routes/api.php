@@ -37,3 +37,6 @@ Route::prefix('user')->group(function () {
 Route::prefix('post')->group(function () {
     Route::get('{post}/comments', [CommentController::class, 'index']);
 });
+Route::prefix('comment')->group(function () {
+    Route::get('{comment}/replies', [CommentController::class, 'replies']);
+});

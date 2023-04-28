@@ -13,8 +13,14 @@ class CommentController extends Controller
      */
     public function index($post_id)
     {
-        //
         return Comment::where('post_id', $post_id)->get();
+    }
+
+    public function replies($comment_id)
+    {
+        $comment =  Comment::find($comment_id);
+        return $comment->replies;
+        // return $comment;
     }
 
     /**
